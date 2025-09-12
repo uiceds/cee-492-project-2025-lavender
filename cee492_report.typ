@@ -7,11 +7,11 @@
   ],
   authors: (
     (
-      name: "Author1",
-      department: [Department 1],
+      name: "Yun-Rou Lin",
+      department: [Department of Civil and Environmental Engineering (CEE)],
       organization: [University of Illinois Urbana-Champaign],
       location: [Urbana, IL, USA],
-      email: "author1@illinois.edu",
+      email: "yunroul2@illinois.edu",
     ),
     (
       name: "Xueming Xu",
