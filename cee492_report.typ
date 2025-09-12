@@ -15,7 +15,7 @@
     ),
     (
       name: "Xueming Xu",
-      department: [Department 2],
+      department: [Department of Civil and Environmental Engineering (CEE)],
       organization: [University of Illinois Urbana-Champaign],
       location: [Urbana, IL, USA],
       email: "xx37@illinois.edu",
