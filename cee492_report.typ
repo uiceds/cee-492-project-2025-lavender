@@ -41,18 +41,15 @@
 
 == Proposal 
 
-Flooding in California’s Sacramento Valley poses significant risks to communities, economic activity, and transportation systems. Our project will integrate multiple datasets—including precipitation, distance to waterways, DEM, and land cover—to identify the parameters most critical in driving flood events. By examining two major flooding events in 2018 with these datasets, we will conduct sensitivity analysis to quantify the relative contribution of each factor.
+Flooding in California's Sacramento Valley poses significant risks to communities, economic activity, and transportation systems. Our project will integrate multiple datasets—including precipitation, distance to waterways, DEM, and land cover—to identify the parameters most critical in driving flood events. By examining two major flooding events in 2018 with these datasets, we will conduct sensitivity analysis to quantify the relative contribution of each factor.
 
 The goal of this analysis is to develop a machine learning framework for flood prediction. By reducing the dimensionality of input data, we aim to improve both model interpretability and computational efficiency. Furthermore, this framework will enable scenario simulations—such as intensified rainfall or land cover changes—to assess potential shifts in flood risk under future conditions.
 
 == Dataset Description
-#table(
-  columns: (1fr, 2fr, 0.8fr, 3fr), // control column widths
-  inset: 6pt,                       // padding inside cells
+#align(table(
+  columns: (auto, auto, auto, auto),                     // padding inside cells
   stroke: 0.5pt,                    // border lines
-  [
-    *Dataset*       , *Source* , *Format* , *Description*
-  ],
+  table.header([*Dataset*], [*Source*], [*Format*], [*Description*]), 
   [
     Flood Data,
     [The Global Flood Dataset \
@@ -101,7 +98,7 @@ The goal of this analysis is to develop a machine learning framework for flood p
     —,
     —
   ]
-)
+))
 
 
 /* == First Subsection
