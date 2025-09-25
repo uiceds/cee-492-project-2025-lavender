@@ -1,10 +1,10 @@
 #import "@preview/charged-ieee:0.1.4": ieee
 
 #show: ieee.with(
-  title: [GIS Report],
-  abstract: [
-    This is where you put your abstract. Abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract.
-  ],
+  title: [Flood contributing factors analysis in Sacramento Valley, CA],
+  /* abstract: [
+    This is where you put your abstract. 
+  ], */
   authors: (
     (
       name: "Yun-Rou Lin",
@@ -35,19 +35,76 @@
       email: "kpane2@illinois.edu",
     ),
   ),
-  index-terms: ("Optional", "Keywords", "Here"),
-  bibliography: bibliography("refs.bib"),
+  /* index-terms: ("Optional", "Keywords", "Here"),
+  bibliography: bibliography("refs.bib"), */
 )
 
-= First Section
+== Proposal 
 
-To add citations to the report, go to https://scholar.google.com, search for a paper, click on the quotation mark icon below the search result, and copy the BibTeX entry. Then paste it into the `refs.bib` file. You can cite papers using the `@` symbol followed by the citation key, e.g., @lowry1951protein.
+Flooding in California’s Sacramento Valley poses significant risks to communities, economic activity, and transportation systems. Our project will integrate multiple datasets—including precipitation, distance to waterways, DEM, and land cover—to identify the parameters most critical in driving flood events. By examining two major flooding events in 2018 with these datasets, we will conduct sensitivity analysis to quantify the relative contribution of each factor.
 
-Other options to get BibTeX entries for your references include https://www.bibtex.com/converters/ and asking ChatGPT to generate the a BibTeX entry for you. (If you use ChatGPT, make sure to verify the generated BibTeX entry for correctness.)
+The goal of this analysis is to develop a machine learning framework for flood prediction. By reducing the dimensionality of input data, we aim to improve both model interpretability and computational efficiency. Furthermore, this framework will enable scenario simulations—such as intensified rainfall or land cover changes—to assess potential shifts in flood risk under future conditions.
 
-More information about citations can be found in the Typst documentation: https://typst.app/docs/reference/model/cite.
+== Dataset Description
+#table(
+  columns: (1fr, 2fr, 0.8fr, 3fr), // control column widths
+  inset: 6pt,                       // padding inside cells
+  stroke: 0.5pt,                    // border lines
+  [
+    *Dataset*       , *Source* , *Format* , *Description*
+  ],
+  [
+    Flood Data,
+    [The Global Flood Dataset \
+    [Global Flood Database](https://global-flood-database.cloudtostreet.ai/#interactive-map)], 
+    TIFF,
+    [Spatial distribution of flooding area for two flood events in 2018. \
+    Pixel values indicate flood and non-flood area.]
+  ],
+  [
+    Precipitation,
+    [The Global Flood Dataset \
+    [Global Flood Database](https://global-flood-database.cloudtostreet.ai/#interactive-map)],
+    CSV,
+    [Fields: Date, Precipitation (mm). \
+    Daily precipitation during 2018-03-21 ~ 2018-03-23 \
+    2018-12-05 ~ 2018-12-09.]
+  ],
+  [
+    Precipitation,
+    [USGS \
+    [USGS Current Conditions for the Nation – Precipitation](https://global-flood-database.cloudtostreet.ai/#interactive-map)],
+    TXT,
+    [Fields: Monitoring site ID, date, time, precipitation (inches). \
+    Recorded precipitation depth during the 15-min interval during two \
+    flooding events in Sacramento Valley in 2018.]
+  ],
+  [
+    Distance to Waterway,
+    [USA Detailed Water Bodies \
+    [USA Detailed Water Bodies | ArcGIS Hub](https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about)],
+    SHP,
+    [Fields: Name, Type, ShapeLength, ShapeArea. \
+    Using GIS to filter rivers/streams and drawing the centerlines \
+    where distance grids can be computed.]
+  ],
+  [
+    DEM (Digital Elevation Model),
+    [USGS TNM \
+    [TNM Download v2](https://apps.nationalmap.gov/downloader/)],
+    TIFF,
+    [Elevation around Sacramento Valley area.]
+  ],
+  [
+    Land Use / Land Cover data,
+    —,
+    —,
+    —
+  ]
+)
 
-== First Subsection
+
+/* == First Subsection
 
 To add figures to your report, save the image file in the `figures` folder and use the `#figure` command as shown below to include it in your document. You can specify the width of the image and add a caption. Then you can reference the figure like this: @proofread.
 
@@ -101,4 +158,4 @@ You can create equations using `$` symbols. For example, you can make an inline 
 
 $ x < y => x gt.eq.not y $ <eq1>
 
-You can reference the equation like this: Eq. @eq1.
+You can reference the equation like this: Eq. @eq1. */
