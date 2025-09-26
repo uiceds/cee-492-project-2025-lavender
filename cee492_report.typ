@@ -53,8 +53,8 @@ The goal of this analysis is to develop a machine learning framework for flood p
   stroke: 0.5pt,                    // border lines
   table.header([*Dataset*], [*Source*], [*Format*], [*Description*]), 
   "Flood Data", 
-  "The Global Flood Dataset"
-  #link(www.global-flood-database.cloudtostreet.ai) -> "Global Flood Database",
+  "The Global Flood Dataset parbreak()
+  Global Flood Database (https://global-flood-database.cloudtostreet.ai)",
   "TIFF",
   "Spatial distribution of flooding area for two flood events in 2018. Pixel values indicate flood and non-flood area.", 
   "Precipitation",
