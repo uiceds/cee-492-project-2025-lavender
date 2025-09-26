@@ -1,5 +1,7 @@
 #import "@preview/charged-ieee:0.1.4": ieee
 
+#show link: set text(fill: blue)
+#show link: underline
 #show: ieee.with(
   title: [Flood contributing factors analysis in Sacramento Valley, CA],
   /* abstract: [
@@ -51,13 +53,13 @@ The goal of this analysis is to develop a machine learning framework for flood p
   stroke: 0.5pt,                    // border lines
   table.header([*Dataset*], [*Source*], [*Format*], [*Description*]), 
   "Flood Data", 
-  "The Global Flood Dataset
-  #link(https://global-flood-database.cloudtostreet.ai/)[Global Flood Database]",
+  "The Global Flood Dataset"
+  #link(https://global-flood-database.cloudtostreet.ai/)[Global Flood Database],
   "TIFF",
   "Spatial distribution of flooding area for two flood events in 2018. Pixel values indicate flood and non-flood area.", 
   "Precipitation",
-  "The Global Flood Dataset
-  Global Flood Database (https://global-flood-database.cloudtostreet.ai/#interactive-map)",
+  [The Global Flood Dataset parbreak()
+  Global Flood Database (https://global-flood-database.cloudtostreet.ai/#interactive-map)"],
   "CSV",
   "Fields: Date, Precipitation (mm) parbreak()
   Daily precipitation during 2018-03-21 ~ 2018-03-23 \
