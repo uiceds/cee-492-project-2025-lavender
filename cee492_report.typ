@@ -53,34 +53,29 @@ The goal of this analysis is to develop a machine learning framework for flood p
   stroke: 0.5pt,                    // border lines
   table.header([*Dataset*], [*Source*], [*Format*], [*Description*]), 
   "Flood Data", 
-  "The Global Flood Dataset parbreak()
-  Global Flood Database (https://global-flood-database.cloudtostreet.ai)",
+  "(1)",
   "TIFF",
   "Spatial distribution of flooding area for two flood events in 2018. Pixel values indicate flood and non-flood area.", 
   "Precipitation",
-  [The Global Flood Dataset parbreak()
-  Global Flood Database (https://global-flood-database.cloudtostreet.ai/#interactive-map)"],
+  "(2)",
   "CSV",
   "Fields: Date, Precipitation (mm) parbreak()
   Daily precipitation during 2018-03-21 ~ 2018-03-23 \
   2018-12-05 ~ 2018-12-09.",
   "Precipitation",
-  "USGS
-  USGS Current Conditions for the Nation – Precipitation](https://global-flood-database.cloudtostreet.ai/#interactive-map)",
+  "(3)",
   "TXT",
   "Fields: Monitoring site ID, date, time, precipitation (inches). \
     Recorded precipitation depth during the 15-min interval during two \
     flooding events in Sacramento Valley in 2018.",
   "Distance to Waterway",
-  "USA Detailed Water Bodies \
-  USA Detailed Water Bodies | ArcGIS Hub(https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about)",
+  "(4)",
   "SHP",
   "Fields: Name, Type, ShapeLength, ShapeArea. \
     Using GIS to filter rivers/streams and drawing the centerlines \
     where distance grids can be computed.",
   "DEM (Digital Elevation Model)",
-  "USGS TNM \
-  TNM Download v2(https://apps.nationalmap.gov/downloader/)",
+  "(5)",
   "TIFF",
   "Elevation around Sacramento Valley area.",
   "Land Use / Land Cover data",
