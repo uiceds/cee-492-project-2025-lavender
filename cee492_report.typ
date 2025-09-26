@@ -54,8 +54,7 @@ The goal of this analysis is to develop a machine learning framework for flood p
   "The Global Flood Dataset
   [Global Flood Database](https://global-flood-database.cloudtostreet.ai/",
   "TIFF",
-  "Spatial distribution of flooding area for two flood events in 2018. \
-    Pixel values indicate flood and non-flood area."
+  "Spatial distribution of flooding area for two flood events in 2018. Pixel values indicate flood and non-flood area.", 
   [
     Precipitation,
     [The Global Flood Dataset \
