@@ -39,7 +39,7 @@
   bibliography: bibliography("refs.bib"), */
 )
 
-== Proposal 
+= Proposal 
 
 Flooding in California's Sacramento Valley poses significant risks to communities, economic activity, and transportation systems. Our project will integrate multiple datasets—including precipitation, distance to waterways, DEM, and land cover—to identify the parameters most critical in driving flood events. By examining two major flooding events in 2018 with these datasets, we will conduct sensitivity analysis to quantify the relative contribution of each factor.
 
@@ -52,49 +52,39 @@ The goal of this analysis is to develop a machine learning framework for flood p
   table.header([*Dataset*], [*Source*], [*Format*], [*Description*]), 
   "Flood Data", 
   "The Global Flood Dataset
-  [Global Flood Database](https://global-flood-database.cloudtostreet.ai/",
+  #link(https://global-flood-database.cloudtostreet.ai/"[Global Flood Database],
   "TIFF",
   "Spatial distribution of flooding area for two flood events in 2018. Pixel values indicate flood and non-flood area.", 
-  [
-    Precipitation,
-    [The Global Flood Dataset \
-    [Global Flood Database](https://global-flood-database.cloudtostreet.ai/#interactive-map)],
-    CSV,
-    [Fields: Date, Precipitation (mm). \
-    Daily precipitation during 2018-03-21 ~ 2018-03-23 \
-    2018-12-05 ~ 2018-12-09.]
-  ],
-  [
-    Precipitation,
-    [USGS \
-    [USGS Current Conditions for the Nation – Precipitation](https://global-flood-database.cloudtostreet.ai/#interactive-map)],
-    TXT,
-    [Fields: Monitoring site ID, date, time, precipitation (inches). \
+  "Precipitation",
+  "The Global Flood Dataset
+  Global Flood Database (https://global-flood-database.cloudtostreet.ai/#interactive-map)",
+  "CSV",
+  "Fields: Date, Precipitation (mm) parbreak()
+  Daily precipitation during 2018-03-21 ~ 2018-03-23 \
+  2018-12-05 ~ 2018-12-09.",
+  "Precipitation",
+  "USGS
+  USGS Current Conditions for the Nation – Precipitation](https://global-flood-database.cloudtostreet.ai/#interactive-map)",
+  "TXT",
+  "Fields: Monitoring site ID, date, time, precipitation (inches). \
     Recorded precipitation depth during the 15-min interval during two \
-    flooding events in Sacramento Valley in 2018.]
-  ],
-  [
-    Distance to Waterway,
-    [USA Detailed Water Bodies \
-    [USA Detailed Water Bodies | ArcGIS Hub](https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about)],
-    SHP,
-    [Fields: Name, Type, ShapeLength, ShapeArea. \
+    flooding events in Sacramento Valley in 2018.",
+  "Distance to Waterway",
+  "USA Detailed Water Bodies \
+  USA Detailed Water Bodies | ArcGIS Hub(https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about)",
+  "SHP",
+  "Fields: Name, Type, ShapeLength, ShapeArea. \
     Using GIS to filter rivers/streams and drawing the centerlines \
-    where distance grids can be computed.]
-  ],
-  [
-    DEM (Digital Elevation Model),
-    [USGS TNM \
-    [TNM Download v2](https://apps.nationalmap.gov/downloader/)],
-    TIFF,
-    [Elevation around Sacramento Valley area.]
-  ],
-  [
-    Land Use / Land Cover data,
-    —,
-    —,
-    —
-  ]
+    where distance grids can be computed.",
+  "DEM (Digital Elevation Model)",
+  "USGS TNM \
+  TNM Download v2(https://apps.nationalmap.gov/downloader/)",
+  "TIFF",
+  "Elevation around Sacramento Valley area.",
+  "Land Use / Land Cover data",
+  "",
+  "",
+  ""
 ))
 
 
