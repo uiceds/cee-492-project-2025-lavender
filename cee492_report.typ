@@ -89,6 +89,14 @@ The goal of this analysis is to develop a machine learning framework for flood p
   ""
 ))
 
+= Sources
+
+1. Global Flood Database — https://global-flood-database.cloudtostreet.ai
+2. NOAA Climate Data Online (GHCN‑Daily) — https://www.ncei.noaa.gov/cdo-web/
+3. USGS NWIS Current Conditions — Precipitation — https://waterdata.usgs.gov/nwis/rt
+4. USA Detailed Water Bodies (Esri Hub) — https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about
+5. USGS National Map Downloader — https://apps.nationalmap.gov/downloader/
+6. NLCD (MRLC) — https://www.mrlc.gov/data
 
 /* == First Subsection
 
