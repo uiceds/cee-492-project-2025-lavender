@@ -54,7 +54,7 @@ The goal of this analysis is to develop a machine learning framework for flood p
   table.header([*Dataset*], [*Source*], [*Format*], [*Description*]), 
   "Flood Data", 
   "The Global Flood Dataset"
-  #link(https://global-flood-database.cloudtostreet.ai/)[Global Flood Database],
+  #link(www.global-flood-database.cloudtostreet.ai) -> "Global Flood Database",
   "TIFF",
   "Spatial distribution of flooding area for two flood events in 2018. Pixel values indicate flood and non-flood area.", 
   "Precipitation",
