@@ -36,6 +36,7 @@
       location: [Urbana, IL, USA],
       email: "kpane2@illinois.edu",
     ),
+  
   ),
   /* index-terms: ("Optional", "Keywords", "Here"),
   bibliography: bibliography("refs.bib"), */
@@ -84,6 +85,14 @@ The goal of this analysis is to develop a machine learning framework for flood p
   ""
 ))
 
+= Exploratory Data Analysis
+1. A narrative description and characterization of your dataset, interspersed 
+2. summary statistics
+3. plots
+
+= Predictive Modeling
+A brief plan for the predictive model you will create for Deliverable 3
+
 = Sources
 
 1. Global Flood Database — https://global-flood-database.cloudtostreet.ai
@@ -92,6 +101,8 @@ The goal of this analysis is to develop a machine learning framework for flood p
 4. USA Detailed Water Bodies (Esri Hub) — https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about
 5. USGS National Map Downloader — https://apps.nationalmap.gov/downloader/
 6. NLCD (MRLC) — https://www.mrlc.gov/data
+
+= Reference
 
 /* == First Subsection
 
