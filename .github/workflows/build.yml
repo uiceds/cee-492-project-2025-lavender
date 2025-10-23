@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: typst-community/setup-typst@v4
-      - run: typst compile cee492_Deliverable2.typ build/cee492_Deliverable2.pdf
+      - run: typst compile cee492_Deliverable2.typ cee492_Deliverable2.pdf
       - uses: actions/upload-artifact@v4
         with:
           name: cee 492 deliverable 2 pdf
