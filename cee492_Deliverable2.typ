@@ -112,7 +112,8 @@ Precipitation:
 1. The averaged Sacramento precipitation data from 2011–2024 shows clear interannual variability, with total rainfall ranging from about 25 to 40 inches per year. Years such as 2017 and 2018 recorded the highest totals, aligning with known regional flood events. In contrast, 2021–2022 represent drier periods consistent with drought conditions.
 2. The number of rainfall days decreases with depth threshold: light rain (≥0.01 in) occurs 40–70 days per year, moderate rain (≥0.10 in) around 20–50 days, and heavy rain (≥1.00 in) fewer than 6 days annually. These results indicate that most precipitation in Sacramento falls as frequent low-intensity events, while a few high-intensity storms contribute disproportionately to flood potential.
 Extreme Max Precipitation values (1.5 – 3.5 in) highlight single-day storm intensity and track closely with total annual rainfall trends, suggesting that wetter years tend to experience both greater overall rainfall and more intense storms. Together, these patterns confirm that short-duration, high-intensity rainfall events are key drivers of flooding risk in the Sacramento Valley.
-3. plots
+3. #figure(image("figures/Precip plot 1.png"),caption: [Different Level of Precipitation by Days in Years])
+   #figure(image("figures/Precip plot 2.png"),caption: [Average Precipitation by Years])
 
 Distance to water:
 1. A narrative description and characterization of your dataset, interspersed 
