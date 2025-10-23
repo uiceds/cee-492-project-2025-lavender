@@ -85,13 +85,55 @@ The goal of this analysis is to develop a machine learning framework for flood p
   ""
 ))
 
+Narrative description and characterization of dataset:
+Our study integrates multi-source geospatial and hydro-meteorological data for the Sacramento Valley: a DEM, mapped waterways, NLCD land-use/land-cover, precipitation time series, and flood-extent raster for two 2018 events. The variables are prepared to a common grid so that each pixel has coincident topography, distance-to-channel, land cover, and precipitation attributes alongside its flood/non-flood label (from the flood maps), enabling supervised learning and correlation analyses. The Global Flood Database demonstrates the feasibility of event-based flood-extent mapping used as training targets.
+
+Factors affect flooding:
+DEM / elevation: Lower elevations concentrate surface water and are repeatedly identified as high-susceptibility zones in flood mapping; terrain-based indices derived from the DEM are widely used to delineate floodplains and ponding areas.
+Slope: Gentler slopes favor water accumulation and longer inundation residence times, while steep slopes promote rapid runoff; slope consistently ranks among the most important predictors in susceptibility models.
+Distance to waterway: Proximity to rivers and streams strongly modulates flood likelihood; distance-to-river and stream-density metrics are standard covariates and often emerge as top features in ML models.
+Daily/event precipitation: Flood spatial extent is tied to storm magnitude and intensity; precipitation is a core driver variable in data-driven and physics-guided flood mapping.
+Flood data: Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
+Land use / land cover: Impervious surfaces (urban) increase runoff and reduce infiltration, whereas vegetation/soils buffer peaks; land use is repeatedly shown to improve susceptibility mapping beyond rainfall alone.
+
+Past flooding context: 2018 events
+A strong March 2018 storm produced road flooding and rescues across Northern California, including the greater Sacramento region—consistent with our March 21–23 analysis window.
+For early December 2018, our second window (Dec 5–9) targets a winter storm period captured in our precipitation records and flood maps; we analyze these days as the event forcing for the observed inundation in our dataset (event-based labels from the Global Flood Database).
+We will quantify spatial relationships between flood labels and each factor via maps, distribution plots, and correlation/feature-importance analyses. Specifically, we’ll test whether lower elevation, gentle slopes, shorter channel distances, higher event-window precipitation, and urban land cover co-locate with observed inundation, and rank their contributions with model-agnostic importance in the predictive plan.
+
+
 = Exploratory Data Analysis
+Flood Data:
 1. A narrative description and characterization of your dataset, interspersed 
 2. summary statistics
 3. plots
 
+Precipitation:
+1. The averaged Sacramento precipitation data from 2011–2024 shows clear interannual variability, with total rainfall ranging from about 25 to 40 inches per year. Years such as 2017 and 2018 recorded the highest totals, aligning with known regional flood events. In contrast, 2021–2022 represent drier periods consistent with drought conditions.
+2. The number of rainfall days decreases with depth threshold: light rain (≥0.01 in) occurs 40–70 days per year, moderate rain (≥0.10 in) around 20–50 days, and heavy rain (≥1.00 in) fewer than 6 days annually. These results indicate that most precipitation in Sacramento falls as frequent low-intensity events, while a few high-intensity storms contribute disproportionately to flood potential.
+Extreme Max Precipitation values (1.5 – 3.5 in) highlight single-day storm intensity and track closely with total annual rainfall trends, suggesting that wetter years tend to experience both greater overall rainfall and more intense storms. Together, these patterns confirm that short-duration, high-intensity rainfall events are key drivers of flooding risk in the Sacramento Valley.
+3. #figure(image("figures/Precip plot 1.png"),caption: [Different Level of Precipitation by Days in Years])
+   #figure(image("figures/Precip plot 2.png"),caption: [Average Precipitation by Years])
+
+Distance to water:
+1. A narrative description and characterization of your dataset, interspersed 
+2. summary statistics
+3. plots
+
+Digital Elevation Model(DEM)
+1. A narrative description and characterization of your dataset, interspersed 
+2. summary statistics
+3. plots
+
+Land Use/Cover
+1. A narrative description and characterization of your dataset, interspersed 
+2. summary statistics
+3. plots
+
+
 = Predictive Modeling
 A brief plan for the predictive model you will create for Deliverable 3
+
 
 = Sources
 
