@@ -118,7 +118,6 @@ Flood Data:
 The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of #highlight[xxxxxxxxxxx]. Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
  #figure(image("figures\Flood and DEM.png"),caption: [Flood Map Overlaid on DEM Raster Data])
 Because the flood data is concentrated in a narrow range of elevation values, it is possible that this study may not be able to fully capture the relationship between elevation and flooding. 
-   #figure(image("figures/Precip plot 2.png"),caption: [Average Precipitation by Years])
 
 Precipitation:
 1. The averaged Sacramento precipitation data from 2011–2024 shows clear interannual variability, with total rainfall ranging from about 25 to 40 inches per year. Years such as 2017 and 2018 recorded the highest totals, aligning with known regional flood events. In contrast, 2021–2022 represent drier periods consistent with drought conditions.
