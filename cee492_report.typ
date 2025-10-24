@@ -89,33 +89,28 @@ The goal of this analysis is to develop a machine learning framework for flood p
 ))
 = Exploratory Data Analysis 
 
-/*Narrative description and characterization of dataset:*/
+Narrative description and characterization of dataset:
 Our study integrates multi-source geospatial and hydro-meteorological data for the Sacramento Valley: a DEM, mapped waterways, NLCD land-use/land-cover, precipitation time series, and flood-extent raster for two 2018 events. The variables are prepared to a common grid so that each pixel has coincident topography, distance-to-channel, land cover, and precipitation attributes alongside its flood/non-flood label (from the flood maps), enabling supervised learning and correlation analyses. The Global Flood Database demonstrates the feasibility of event-based flood-extent mapping used as training targets.
 
 Factors affect flooding:
-1. DEM / elevation: Lower elevations concentrate surface water and are repeatedly identified as high-susceptibility zones in flood mapping; terrain-based indices derived from the DEM are widely used to delineate floodplains and ponding areas.
-2. Slope: Gentler slopes favor water accumulation and longer inundation residence times, while steep slopes promote rapid runoff; slope consistently ranks among the most important predictors in susceptibility models.
-3. Distance to waterway: Proximity to rivers and streams strongly modulates flood likelihood; distance-to-river and stream-density metrics are standard covariates and often emerge as top features in ML models.
-4. Daily/event precipitation: Flood spatial extent is tied to storm magnitude and intensity; precipitation is a core driver variable in data-driven and physics-guided flood mapping.
-5. Flood data: Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
-6. Land use / Land Cover: Impervious surfaces (urban) increase runoff and reduce infiltration, whereas vegetation/soils buffer peaks; land use is repeatedly shown to improve susceptibility mapping beyond rainfall alone.
+DEM / elevation: Lower elevations concentrate surface water and are repeatedly identified as high-susceptibility zones in flood mapping; terrain-based indices derived from the DEM are widely used to delineate floodplains and ponding areas.
+Slope: Gentler slopes favor water accumulation and longer inundation residence times, while steep slopes promote rapid runoff; slope consistently ranks among the most important predictors in susceptibility models.
+Distance to waterway: Proximity to rivers and streams strongly modulates flood likelihood; distance-to-river and stream-density metrics are standard covariates and often emerge as top features in ML models.
+Daily/event precipitation: Flood spatial extent is tied to storm magnitude and intensity; precipitation is a core driver variable in data-driven and physics-guided flood mapping.
+Flood data: Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
+Land use / land cover: Impervious surfaces (urban) increase runoff and reduce infiltration, whereas vegetation/soils buffer peaks; land use is repeatedly shown to improve susceptibility mapping beyond rainfall alone.
 
 Past flooding context: 2018 events
-
-A strong March 2018 storm produced road flooding and rescues across Northern California, including the greater Sacramento region—consistent with our March 21th to 23rd analysis window.
-For early December 2018, our second window (Dec 5th to 9th) targets a winter storm period captured in our precipitation records and flood maps; we analyze these days as the event forcing for the observed inundation in our dataset (event-based labels from the Global Flood Database).
-
-We will quantify spatial relationships between flood labels and each factor via maps, distribution plots, and correlation/feature-importance analyses. Specifically, we'll test whether lower elevation, gentle slopes, shorter channel distances, higher event-window precipitation, and urban land cover co-locate with observed inundation, and rank their contributions with model-agnostic importance in the predictive plan.
+A strong March 2018 storm produced road flooding and rescues across Northern California, including the greater Sacramento region—consistent with our March 21–23 analysis window.
+For early December 2018, our second window (Dec 5–9) targets a winter storm period captured in our precipitation records and flood maps; we analyze these days as the event forcing for the observed inundation in our dataset (event-based labels from the Global Flood Database).
+We will quantify spatial relationships between flood labels and each factor via maps, distribution plots, and correlation/feature-importance analyses. Specifically, we’ll test whether lower elevation, gentle slopes, shorter channel distances, higher event-window precipitation, and urban land cover co-locate with observed inundation, and rank their contributions with model-agnostic importance in the predictive plan.
 
 
 = Exploratory Data Analysis
 Flood Data:
-
-Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
-
-/* 1. A narrative description and characterization of your dataset, interspersed 
+1. A narrative description and characterization of your dataset, interspersed 
 2. summary statistics
-3. plots */
+3. plots
 
 == Precipitation
 1. The averaged Sacramento precipitation data from 2011–2024 shows clear interannual variability, with total rainfall ranging from about 25 to 40 inches per year. Years such as 2017 and 2018 recorded the highest totals, aligning with known regional flood events. In contrast, 2021–2022 represent drier periods consistent with drought conditions.
@@ -129,17 +124,8 @@ Satellite-derived flood-extent products provide pixel-wise labels of flooded vs.
 1. A narrative description and characterization of your dataset, interspersed 
 2. summary statistics
 3. plots
-1. All layers were projected to WGS 1984 to support accurate area calculations (planar units in meters). We built multiple-ring buffers around rivers/streams, converted them to non-overlapping rings, and used Intersect to clip the flood polygons to each ring so the distance class is carried as an attribute. We then computed (i) share of total flood area in each class and (ii) a normalized flood rate = (flooded area within a ring) / (total ring area). 
-  
-  Key processing steps: Erase (flood minus permanent water), Multiple Ring Buffer → non-overlapping rings, Intersect (flood & rings), Calculate Geometry Attributes (Area in km²), and Summary Statistics by distance class.
 
-2. Interpretation. Within the 3 km corridor, flood area distributes fairly evenly by ring once normalized by available land (2.23–2.84 % of each ring is flooded). Raw area shares, however, are largest in the 1–3 km ring simply because that ring covers the greatest land area. The near-uniform normalized rates suggest that proximity alone does not dominate within 3 km; topography (low basin slopes), local storage, and floodplain width likely modulate where water spreads, consistent with our basin setting hypothesis.
-
-3. #figure(image("figures/Water_Distance_1.png"),caption:[Flood area by distance-to-water classes.])
-   #figure(image("figures/Water_Distance_2.png"),caption: [Normalized flood rate (% of ring)])
-
-
-== Digital Elevation Model(DEM)
+Digital Elevation Model(DEM)
 1. A narrative description and characterization of your dataset, interspersed 
 2. summary statistics
 3. plots
