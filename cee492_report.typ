@@ -94,19 +94,19 @@ Our study integrates multi-source geospatial and hydro-meteorological data for t
 
 == Flood Contributing Factors and Flood Data
 
-DEM (elevation): Lower elevations concentrate surface water and are repeatedly identified as high-susceptibility zones in flood mapping; terrain-based indices derived from the DEM are widely used to delineate floodplains and ponding areas.
+*DEM (elevation)*: Lower elevations concentrate surface water and are repeatedly identified as high-susceptibility zones in flood mapping; terrain-based indices derived from the DEM are widely used to delineate floodplains and ponding areas.
 
-Slope: Gentler slopes favor water accumulation and longer inundation residence times, while steep slopes promote rapid runoff; slope consistently ranks among the most important predictors in susceptibility models.
+*Slope*: Gentler slopes favor water accumulation and longer inundation residence times, while steep slopes promote rapid runoff; slope consistently ranks among the most important predictors in susceptibility models.
 
-Distance to waterway: Proximity to rivers and streams strongly modulates flood likelihood; distance-to-river and stream-density metrics are standard covariates and often emerge as top features in ML models.
+*Distance to waterway*: Proximity to rivers and streams strongly modulates flood likelihood; distance-to-river and stream-density metrics are standard covariates and often emerge as top features in ML models.
 
-Daily/event precipitation: Flood spatial extent is tied to storm magnitude and intensity; precipitation is a core driver variable in data-driven and physics-guided flood mapping.
+*Daily/event precipitation*: Flood spatial extent is tied to storm magnitude and intensity; precipitation is a core driver variable in data-driven and physics-guided flood mapping.
 
-Flood data: Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
+*Flood data*: Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
 
-Land use / land cover: Impervious surfaces (urban) increase runoff and reduce infiltration, whereas vegetation/soils buffer peaks; land use is repeatedly shown to improve susceptibility mapping beyond rainfall alone.
+*Land use/Land Cover*: Impervious surfaces (urban) increase runoff and reduce infiltration, whereas vegetation/soils buffer peaks; land use is repeatedly shown to improve susceptibility mapping beyond rainfall alone.
 
-Past flooding context: 2018 events
+*Past flooding context: 2018 events*
 
 A strong March 2018 storm produced road flooding and rescues across Northern California, including the greater Sacramento region—consistent with our March 21th to 23rd analysis window.
 For early December 2018, our second window (Dec 5th to 9th) targets a winter storm period captured in our precipitation records and flood maps; we analyze these days as the event forcing for the observed inundation in our dataset (event-based labels from the Global Flood Database).
@@ -115,9 +115,8 @@ We will quantify spatial relationships between flood labels and each factor via 
 
 
 = Exploratory Data Analysis
-== Flood Data:
-
-The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of 11,416 km#super("2"). Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
+Flood Data:
+The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of #highlight[11834.692 square km#super("2")]. Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
  #figure(image("figures\Flood and DEM.png"),caption: [Flood Map Overlaid on DEM Raster Data])
 It should be noted that because the flood data is concentrated in a narrow range of elevation values, it is possible that this study may not be able to fully capture the relationship between elevation and flooding. 
 
@@ -136,17 +135,15 @@ Satellite-derived flood-extent products provide pixel-wise labels of flooded vs.
    #figure(image("figures/Precip plot 2.png"),caption: [Average Precipitation by Years])
 
 == Distance to water:
-1. A narrative description and characterization of your dataset, interspersed 
-2. summary statistics
-3. plots
-1. All layers were projected to WGS 1984 to support accurate area calculations (planar units in meters). We built multiple-ring buffers around rivers/streams, converted them to non-overlapping rings, and used Intersect to clip the flood polygons to each ring so the distance class is carried as an attribute. We then computed (i) share of total flood area in each class and (ii) a normalized flood rate = (flooded area within a ring) / (total ring area). 
+All layers were projected to WGS 1984 to support accurate area calculations (planar units in meters). We built multiple-ring buffers around rivers/streams, converted them to non-overlapping rings, and used Intersect to clip the flood polygons to each ring so the distance class is carried as an attribute. We then computed (i) share of total flood area in each class and (ii) a normalized flood rate = (flooded area within a ring) / (total ring area). 
   
   Key processing steps: Erase (flood minus permanent water), Multiple Ring Buffer → non-overlapping rings, Intersect (flood & rings), Calculate Geometry Attributes (Area in km²), and Summary Statistics by distance class.
+ #figure(image("figures/Layout_DistancetoWaterway.png"),caption: [Waterway Distance Buffer Rings])
 
-2. Interpretation. Within the 3 km corridor, flood area distributes fairly evenly by ring once normalized by available land (2.23–2.84 % of each ring is flooded). Raw area shares, however, are largest in the 1–3 km ring simply because that ring covers the greatest land area. The near-uniform normalized rates suggest that proximity alone does not dominate within 3 km; topography (low basin slopes), local storage, and floodplain width likely modulate where water spreads, consistent with our basin setting hypothesis.
+Interpretation. Within the 3 km corridor, flood area distributes fairly evenly by ring once normalized by available land (2.23–2.84 % of each ring is flooded). Raw area shares, however, are largest in the 1–3 km ring simply because that ring covers the greatest land area. The near-uniform normalized rates suggest that proximity alone does not dominate within 3 km; topography (low basin slopes), local storage, and floodplain width likely modulate where water spreads, consistent with our basin setting hypothesis.
+#figure(image("figures/Water_Distance_1.png"),caption:[Flood area by distance-to-water classes.])
 
-3. #figure(image("figures/Water_Distance_1.png"),caption:[Flood area by distance-to-water classes.])
-   #figure(image("figures/Water_Distance_2.png"),caption: [Normalized flood rate (% of ring)])
+#figure(image("figures/Water_Distance_2.png"),caption: [Normalized flood rate (% of ring)])
 
 
 == Digital Elevation Model(DEM)
