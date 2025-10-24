@@ -69,14 +69,14 @@ The goal of this analysis is to develop a machine learning framework for flood p
   "Precipitation",
   "(3)",
   "TXT",
-  "Fields: Monitoring site ID, date, time, precipitation (inches). \
-    Recorded precipitation depth during the 15-min interval during two \
+  "Fields: Monitoring site ID, date, time, precipitation (inches). 
+    Recorded precipitation depth during the 15-min interval during two 
     flooding events in Sacramento Valley in 2018.",
   "Distance to Waterway",
   "(4)",
   "SHP",
-  "Fields: Name, Type, ShapeLength, ShapeArea. \
-    Using GIS to filter rivers/streams and drawing the centerlines \
+  "Fields: Name, Type, ShapeLength, ShapeArea. 
+    Using GIS to filter rivers/streams and drawing the centerlines 
     where distance grids can be computed.",
   "DEM (Digital Elevation Model)",
   "(5)",
