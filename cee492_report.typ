@@ -154,10 +154,16 @@ Satellite-derived flood-extent products provide pixel-wise labels of flooded vs.
 2. summary statistics
 3. plots
 
-Land Use/Cover
-1. A narrative description and characterization of your dataset, interspersed 
-2. summary statistics
-3. plots
+
+== Land Use/Cover
+This dataset comes from the USGS National Land Cover Database (NLCD) from a 2018 dataset, which provides 30-meter resolution land cover classifications for the United States. The dataset classifies land cover into 16 different classes based on satellite imagery and other ancillary data. 
+
+With interest in analyzing the impacts that land cover category has on flooding outcomes, a pie chart was created to visualize the distribution of land cover types among the total flooded area.
+#figure(image("figures\Flood Land Composition.png"),caption: [Portion of Flooded Area Within Each Land Cover Type])
+To truly analyze the relationship between land cover and flooding, it is important to consider not just the proportion of each land cover type within the flooded area, but also the overall distribution of land cover types across the entire study area. This would allow for a more accurate assessment of whether certain land cover types are disproportionately represented in flooded areas compared to their prevalence in the landscape as a whole. As such, percentage of flood prevalence was calculated within each individual land cover type, which provides a clearer picture of how likely each land cover type is to experience flooding.
+#figure(image("figures\flood percent by LC.png"),caption: [Percentage of Area Flooded by Land Cover Type])
+Crop land overwhelmingly dominates the flooded area, with more than 3 times the rate of flooding as its runner up, barren land. This observation can likely be attributed to the fact that poor-drainage soils are preferable for agricultural activities due to the ability to retain moisture, but are consequently more prone to flooding. One surprising observation from this graph is that all developed land categories have a relatively low flood prevalence (below 1%). This could be due to the presence of stormwater management infrastructure in urban areas, such as storm drains and retention basins, which help mitigate flooding despite the high proportion of impervious surfaces. Other land cover types such as forest, shrub, and herbaceous also have low flood prevalence, likely due to their natural ability to absorb and slow down runoff.
+
 
 
 = Predictive Modeling
