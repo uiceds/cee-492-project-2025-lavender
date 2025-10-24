@@ -50,7 +50,6 @@ The goal of this analysis is to develop a machine learning framework for flood p
 
 /*= Introduction */
 
-
 == Dataset Description
 #align(table(
   columns: (auto, auto, auto, auto),                     // padding inside cells
@@ -59,33 +58,40 @@ The goal of this analysis is to develop a machine learning framework for flood p
   "Flood Data", 
   "(1)",
   "TIFF",
-  "Spatial distribution of flooding area for two flood events in 2018. Pixel values indicate flood and non-flood area.", 
+  "Spatial distribution of flooding area for two flood events in 2018. 
+  
+Pixel values indicate flood (1) and non-flood (0) area.", 
   "Precipitation",
   "(2)",
   "CSV",
-  "Fields: Date, Precipitation (mm) parbreak()
-  Daily precipitation during 2018-03-21 ~ 2018-03-23 \
-  2018-12-05 ~ 2018-12-09.",
+  "Fields: 
+Date, Precipitation (mm), Daily precipitation during 2018-03-21 through 2018-03-23 and 2018-12-05 through 2018-12-09.",
   "Precipitation",
   "(3)",
   "TXT",
-  "Fields: Monitoring site ID, date, time, precipitation (inches). \
-    Recorded precipitation depth during the 15-min interval during two \
-    flooding events in Sacramento Valley in 2018.",
+  "Fields: 
+Monitoring site ID, date, time, precipitation (inches).
+
+Recorded precipitation depth during the 15-min interval during two
+flooding events in Sacramento Valley in 2018.",
   "Distance to Waterway",
   "(4)",
   "SHP",
-  "Fields: Name, Type, ShapeLength, ShapeArea. \
-    Using GIS to filter rivers/streams and drawing the centerlines \
-    where distance grids can be computed.",
+  "Fields: 
+Name, Type, ShapeLength, ShapeArea. 
+
+Using GIS to filter rivers/streams and drawing the centerlines where distance grids can be computed.",
   "DEM (Digital Elevation Model)",
   "(5)",
   "TIFF",
   "Elevation around Sacramento Valley area.",
   "Land Use / Land Cover data",
-  "",
-  "",
-  ""
+  "(6)",
+  "TIFF",
+  "2018 National Land Cover Database (NLCD) raster data with 30-meter resolution. 
+
+Fields: 
+Land Cover Classification, Fraction Impervious Surface",
 ))
 = Exploratory Data Analysis 
 
@@ -116,7 +122,7 @@ We will quantify spatial relationships between flood labels and each factor via 
 
 = Exploratory Data Analysis
 Flood Data:
-The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of #highlight[11834.692 square km#super("2")]. Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
+The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of 11834.692 square km#super("2"). Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
  #figure(image("figures\Flood and DEM.png"),caption: [Flood Map Overlaid on DEM Raster Data])
 It should be noted that because the flood data is concentrated in a narrow range of elevation values, it is possible that this study may not be able to fully capture the relationship between elevation and flooding. 
 
