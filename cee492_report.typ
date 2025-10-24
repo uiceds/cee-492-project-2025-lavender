@@ -48,6 +48,9 @@ Flooding in California's Sacramento Valley poses significant risks to communitie
 
 The goal of this analysis is to develop a machine learning framework for flood prediction. By reducing the dimensionality of input data, we aim to improve both model interpretability and computational efficiency. Furthermore, this framework will enable scenario simulations—such as intensified rainfall or land cover changes—to assess potential shifts in flood risk under future conditions.
 
+= Introduction
+
+
 == Dataset Description
 #align(table(
   columns: (auto, auto, auto, auto),                     // padding inside cells
@@ -91,7 +94,17 @@ The goal of this analysis is to develop a machine learning framework for flood p
 3. plots
 
 = Predictive Modeling
-A brief plan for the predictive model you will create for Deliverable 3
+/*A brief plan for the predictive model you will create for Deliverable 3 */
+We plan to develop a supervised machine learning model with the following approach:
+1. Objective: Identify the most influential environmental variables driving flood events
+2. Input features: Precipitation, elevation (DEM), slope, land cover type, and distance to waterways.
+3. Study area: Sacramento Valley
+4. Model type: Random forest to capture nonlinear relationship
+5. Goal: Identify the most influential environmental variables driving flood events.
+6. Optional: Combining with a CNN UNet model to predict the flooding under different precipitation scenarios. By sensitivity analysis, we can reduce the not that important factors and accelerate the UNet model training.
+
+
+
 
 = Sources
 
