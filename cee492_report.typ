@@ -147,9 +147,13 @@ Interpretation. Within the 3 km corridor, flood area distributes fairly evenly b
 
 
 == Digital Elevation Model(DEM)
-1. A narrative description and characterization of your dataset, interspersed 
-2. summary statistics
-3. plots
+DEM raster data was used to derive elevation and slope information for the study area. As can be seen from the figure below, the elevation ranges from approximately -32 to 1249 meters above sea level. Yet, with a mean DEM value of about 122 meters (much closer to the minimum value than the maximum), it is clear that low elevation areas dominate the study area, which is consistent with the geography of the Sacramento Valley and with our expectation for flooding to occur at local elevation minima.
+
+#figure(image("figures/elevation_zoom.png"),caption: [DEM Data in Sacramento Valley, CA])
+
+From DEM, slope data was also derived in ArcGIS Pro. These results are shown in the figure below. It can be observed that the slope values at the base of the valley are very low (close to 0 degrees), which is consistent with our expectation for flooding to occur in low-slope areas.
+
+#figure(image("figures/slope zoom.png"),caption: [Slope Data in Sacramento Valley, CA])
 
 
 == Land Use/Cover
