@@ -115,9 +115,9 @@ We will quantify spatial relationships between flood labels and each factor via 
 
 
 = Exploratory Data Analysis
-Flood Data:
+== Flood Data:
 
-The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of #highlight[xxxxxxxxxxx]. Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
+The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of 11,416 km#super("2"). Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
  #figure(image("figures\Flood and DEM.png"),caption: [Flood Map Overlaid on DEM Raster Data])
 It should be noted that because the flood data is concentrated in a narrow range of elevation values, it is possible that this study may not be able to fully capture the relationship between elevation and flooding. 
 
