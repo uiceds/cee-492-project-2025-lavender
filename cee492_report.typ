@@ -123,10 +123,77 @@ We will quantify spatial relationships between flood labels and each factor via 
 = Exploratory Data Analysis
 Flood Data:
 The total area of flooding was 261.5 square km#super("2") within the total sampled area of interest of 11834.692 square km#super("2"). Based on the image below, it can also be observed that most of the flooding occurred in low elevation areas (at the base of the valley), which is consistent with our expectations.
- #figure(image("figures\Flood and DEM.png"),caption: [Flood Map Overlaid on DEM Raster Data])
+ #figure(image("figures/Flood and DEM.png"),caption: [Flood Map Overlaid on DEM Raster Data])
 It should be noted that because the flood data is concentrated in a narrow range of elevation values, it is possible that this study may not be able to fully capture the relationship between elevation and flooding. 
 
 Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
+
+/* 1. A narrative description and characterization of your dataset, interspersed 
+2. summary statistics
+3. plots */
+
+== Precipitation
+1. The averaged Sacramento precipitation data from 2011–2024 shows clear interannual variability, with total rainfall ranging from about 25 to 40 inches per year. Years such as 2017 and 2018 recorded the highest totals, aligning with known regional flood events. In contrast, 2021–2022 represent drier periods consistent with drought conditions.
+2. The number of rainfall days decreases with depth threshold: light rain (≥0.01 in) occurs 40–70 days per year, moderate rain (≥0.10 in) around 20–50 days, and heavy rain (≥1.00 in) fewer than 6 days annually. These results indicate that most precipitation in Sacramento falls as frequent low-intensity events, while a few high-intensity storms contribute disproportionately to flood potential.
+  
+  Extreme Max Precipitation values (1.5 – 3.5 in) highlight single-day storm intensity and track closely with total annual rainfall trends, suggesting that wetter years tend to experience both greater overall rainfall and more intense storms. Together, these patterns confirm that short-duration, high-intensity rainfall events are key drivers of flooding risk in the Sacramento Valley.
+3. #figure(image("figures/Precip plot 1.png"),caption: [Different Level of Precipitation by Days in Years])
+   #figure(image("figures/Precip plot 2.png"),caption: [Average Precipitation by Years])
+
+== Distance to water:
+All layers were projected to WGS 1984 to support accurate area calculations (planar units in meters). We built multiple-ring buffers around rivers/streams, converted them to non-overlapping rings, and used Intersect to clip the flood polygons to each ring so the distance class is carried as an attribute. We then computed (i) share of total flood area in each class and (ii) a normalized flood rate = (flooded area within a ring) / (total ring area). 
+  
+  Key processing steps: Erase (flood minus permanent water), Multiple Ring Buffer → non-overlapping rings, Intersect (flood & rings), Calculate Geometry Attributes (Area in km²), and Summary Statistics by distance class.
+ #figure(image("figures/Layout_DistancetoWaterway.png"),caption: [Waterway Distance Buffer Rings])
+
+Interpretation. Within the 3 km corridor, flood area distributes fairly evenly by ring once normalized by available land (2.23–2.84 % of each ring is flooded). Raw area shares, however, are largest in the 1–3 km ring simply because that ring covers the greatest land area. The near-uniform normalized rates suggest that proximity alone does not dominate within 3 km; topography (low basin slopes), local storage, and floodplain width likely modulate where water spreads, consistent with our basin setting hypothesis.
+#figure(image("figures/Water_Distance_1.png"),caption:[Flood area by distance-to-water classes.])
+
+#figure(image("figures/Water_Distance_2.png"),caption: [Normalized flood rate (% of ring)])
+
+
+== Digital Elevation Model(DEM)
+DEM raster data was used to derive elevation and slope information for the study area. As can be seen from the figure below, the elevation ranges from approximately -32 to 1249 meters above sea level. Yet, with a mean DEM value of about 122 meters (much closer to the minimum value than the maximum), it is clear that low elevation areas dominate the study area, which is consistent with the geography of the Sacramento Valley and with our expectation for flooding to occur at local elevation minima.
+
+#figure(image("figures/elevation_zoom.png"),caption: [DEM Data in Sacramento Valley, CA])
+
+From DEM, slope data was also derived in ArcGIS Pro. These results are shown in the figure below. It can be observed that the slope values at the base of the valley are very low (close to 0 degrees), which is consistent with our expectation for flooding to occur in low-slope areas.
+
+#figure(image("figures/slope zoom.png"),caption: [Slope Data in Sacramento Valley, CA])
+
+
+== Land Use/Cover
+This dataset comes from the USGS National Land Cover Database (NLCD) from a 2018 dataset, which provides 30-meter resolution land cover classifications for the United States. The dataset classifies land cover into 16 different classes based on satellite imagery and other ancillary data. 
+
+With interest in analyzing the impacts that land cover category has on flooding outcomes, a pie chart was created to visualize the distribution of land cover types among the total flooded area.
+#figure(image("figures/Flood Land Composition.png"),caption: [Portion of Flooded Area Within Each Land Cover Type])
+To truly analyze the relationship between land cover and flooding, it is important to consider not just the proportion of each land cover type within the flooded area, but also the overall distribution of land cover types across the entire study area. This would allow for a more accurate assessment of whether certain land cover types are disproportionately represented in flooded areas compared to their prevalence in the landscape as a whole. As such, percentage of flood prevalence was calculated within each individual land cover type, which provides a clearer picture of how likely each land cover type is to experience flooding.
+#figure(image("figures/flood percent by LC.png"),caption: [Percentage of Area Flooded by Land Cover Type])
+Crop land overwhelmingly dominates the flooded area, with more than 3 times the rate of flooding as its runner up, barren land. This observation can likely be attributed to the fact that poor-drainage soils are preferable for agricultural activities due to the ability to retain moisture, but are consequently more prone to flooding. One surprising observation from this graph is that all developed land categories have a relatively low flood prevalence (below 1%). This could be due to the presence of stormwater management infrastructure in urban areas, such as storm drains and retention basins, which help mitigate flooding despite the high proportion of impervious surfaces. Other land cover types such as forest, shrub, and herbaceous also have low flood prevalence, likely due to their natural ability to absorb and slow down runoff.
+
+
+
+= Predictive Modeling
+/*A brief plan for the predictive model you will create for Deliverable 3 */
+We plan to develop a supervised machine learning model with the following approach:
+1. Objective: Identify the most influential environmental variables driving flood events
+2. Input features: Precipitation, elevation (DEM), slope, land cover type, and distance to waterways.
+3. Study area: Sacramento Valley
+4. Model type: Random forest to capture nonlinear relationship
+5. Goal: Identify the most influential environmental variables driving flood events.
+6. Optional: Combining with a CNN UNet model to predict the flooding under different precipitation scenarios. By sensitivity analysis, we can reduce the not that important factors and accelerate the UNet model training.
+
+
+
+= Sources
+
+1. Global Flood Database — https://global-flood-database.cloudtostreet.ai
+2. NOAA Climate Data Online (GHCN‑Daily) — https://www.ncei.noaa.gov/cdo-web/
+3. USGS NWIS Current Conditions — Precipitation — https://waterdata.usgs.gov/nwis/rt
+4. USA Detailed Water Bodies (Esri Hub) — https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about
+5. USGS National Map Downloader — https://apps.nationalmap.gov/downloader/
+6. NLCD (MRLC) — https://www.mrlc.gov/data
+
 
 /* 1. A narrative description and characterization of your dataset, interspersed 
 2. summary statistics
