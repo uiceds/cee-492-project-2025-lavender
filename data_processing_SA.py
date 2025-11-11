@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 
 # === path ===
+
+#Change the base path to your local directory
 base = "/Users/yun-roulin/Desktop/Couses/CEE598/Project_model/training data/test_training"
 
 dem_path   = f"{base}/test_dem_mod.tif"
@@ -53,6 +55,7 @@ data = pd.DataFrame({
 data = data.dropna()
 
 # === save to CSV ===
+#Change the output path to your desired location
 out_csv = "/Users/yun-roulin/Desktop/Couses/CEE598/Project_model/flood_data.csv"
 data.to_csv(out_csv, index=False)
 
