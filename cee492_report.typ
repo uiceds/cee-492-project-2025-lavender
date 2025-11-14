@@ -224,6 +224,51 @@ We plan to develop a supervised machine learning model with the following approa
 The confusion matrix in Table 1 compares the model’s flood prediction to the actual flooded areas observed in the real world (ground truth). True, or correct, predictions are highlighted in green, and false ones in red. 
 “True (Model prediction)” represents pixels where the model predicted flooding, and “True (Ground truth)” represents the pixels that were actually flooded in the real world flood dataset. The model correctly predicted 391 pixels as flooded (true positive), but incorrectly predicted that an additional 11187 pixels were flooded, which were not flooded in real life (false positive). 204 ground truth flood points were incorrectly predicted to be non-flooded (false negative), while the other 92005 pixels that the model predicted as non-flooded were correct (true negative). This table makes it clear how often the model successfully detected true flooding versus how often it failed, and it provides a foundation for understanding the model’s strengths and limitations.
 
+#let text-cell(content) = align(left, content)
+#let num-cell(content) = align(center, content)
+
+#figure(
+  caption: [Table 2. Model Performance],
+  table(
+    columns: (auto, auto, auto),
+
+    // Header
+    table.header(
+      table.cell(align: left)[*Metric*],
+      table.cell(align: center)[*Value*],
+      table.cell(align: left)[*Interpretation*],
+    ),
+
+    // Accuracy
+    text-cell([Accuracy]),
+    num-cell([0.89]),
+    text-cell([The accuracy remains high, dominated by true negatives.]),
+
+    // Precision
+    text-cell([Precision]),
+    num-cell([0.657]),
+    text-cell([Of the model’s predicted flood area, 66% was truly flooded.]),
+
+    // Recall
+    text-cell([Recall]),
+    num-cell([0.034]),
+    text-cell([The model correctly found just 3.4% of the flooded pixels.]),
+
+    // F1-score
+    text-cell([F1-score]),
+    num-cell([0.065]),
+    text-cell([The low recall brought down the F1 score for an overall low F1 score.]),
+  ),
+)
+
+
+With an accuracy of 89%, the model may appear very successful, but the other metrics can reveal flaws. The model has a low recall of 3.4%, meaning that a very small portion of the real-world flooded zones were predicted to flood by the model. In other words, it under-predicted the occurrence of flooding, which may be a sign of the imbalance of the data.
+
+The low recall despite high accuracy demonstrates that the dataset is imbalanced, with a majority of the data representing non-flooded areas. Due to the dominance of non-flooded pixels over flooded pixels, the accuracy is more representative of how well the model can predict non-flooded areas than its ability to predict flooded areas.
+
+  The precision represents how much of the model’s predicted flood zones were truly flooded in the real world data. With 66% precision, a majority of the flood prediction was actually flooded, but an increase to this number would be beneficial.
+ 
+ Some methods for improving the model’s performance include adding more data on flooded areas and considering more parameters that may affect flood risk or to implement a weighting scheme that prioritizes parameters based on how indicative they are of flood occurrence.
 
 = Sources
 
