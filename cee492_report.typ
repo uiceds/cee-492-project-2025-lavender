@@ -182,7 +182,24 @@ We plan to develop a supervised machine learning model with the following approa
 4. Model type: Random forest to capture nonlinear relationship
 5. Goal: Identify the most influential environmental variables driving flood events.
 6. Optional: Combining with a CNN UNet model to predict the flooding under different precipitation scenarios. By sensitivity analysis, we can reduce the not that important factors and accelerate the UNet model training.
+== Model Structure
 
+== Training and Validation
+
+== Model Performance Evaluation
+  To evaluate te success of our predictive model, we use several standard performance metrics including accuracy, precision, recall, and F1-score. These metrics provide a comprehensive understanding of the model's ability to correctly classify flooded and non-flooded areas.
+
+  #figure(
+    caption: [Confusion Matrix],
+    table(
+      columns: (auto, auto, auto),
+      table.header([* *], [*True (Ground truth): Flooded*], [*True (Ground truth): Non-flooded*]),
+      [*Model prediction: Flooded*], [*391*], [*204*],
+      [*Model prediction: Non-flooded*], [*11187*], [*92005*],
+    ),
+  ) <confusion-matrix>
+The confusion matrix in Table 1 compares the model’s flood prediction to the actual flooded areas observed in the real world (ground truth). True, or correct, predictions are highlighted in green, and false ones in red. 
+“True (Model prediction)” represents pixels where the model predicted flooding, and “True (Ground truth)” represents the pixels that were actually flooded in the real world flood dataset. The model correctly predicted 391 pixels as flooded (true positive), but incorrectly predicted that an additional 11187 pixels were flooded, which were not flooded in real life (false positive). 204 ground truth flood points were incorrectly predicted to be non-flooded (false negative), while the other 92005 pixels that the model predicted as non-flooded were correct (true negative). This table makes it clear how often the model successfully detected true flooding versus how often it failed, and it provides a foundation for understanding the model’s strengths and limitations.
 
 
 = Sources
