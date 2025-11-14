@@ -194,8 +194,8 @@ We plan to develop a supervised machine learning model with the following approa
     table(
       columns: (auto, auto, auto),
       table.header([* *], [*True (Ground truth): Flooded*], [*True (Ground truth): Non-flooded*]),
-      [*Model prediction: Flooded*], [*391*], [*204*],
-      [*Model prediction: Non-flooded*], [*11187*], [*92005*],
+      [*Model prediction: Flooded*], box(fill: rgb("#dce7d3"), inset: 6pt)[391], box(fill: rgb("#eac7c7"), inset: 6pt)[204],
+      [*Model prediction: Non-flooded*], box(fill: rgb("#eac7c7"), inset: 6pt)[11187], box(fill: rgb("#dce7d3"), inset: 6pt)[92005],
     ),
   ) <confusion-matrix>
 The confusion matrix in Table 1 compares the model’s flood prediction to the actual flooded areas observed in the real world (ground truth). True, or correct, predictions are highlighted in green, and false ones in red. 
