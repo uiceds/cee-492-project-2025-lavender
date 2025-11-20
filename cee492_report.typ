@@ -209,12 +209,12 @@ We plan to develop a supervised machine learning model with the following approa
     ),
 
     text-cell([*Model prediction: Flooded*]),
-      num-cell([*391*], color: rgb("#e1ffd6")),
-      num-cell([*204*], color: rgb("#ffd4d4")),
+      num-cell([*391*], color: rgb("#058fd9c1")),
+      num-cell([*204*], color: rgb("#ff934f")),
 
     text-cell([*Model prediction: Non-flooded*]),
-      num-cell([*11187*], color: rgb("#ffd4d4")),
-      num-cell([*92005*], color: rgb("#e1ffd6")),
+      num-cell([*11187*], color: rgb("#ff934f")),
+      num-cell([*92005*], color: rgb("#058fd9c1")),
   ),
 ) <confusion-matrix>
 
