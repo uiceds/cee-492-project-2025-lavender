@@ -96,28 +96,20 @@ Land Cover Classification, Fraction Impervious Surface",
 = Exploratory Data Analysis 
 
 /*Narrative description and characterization of dataset:*/
-Our study integrates multi-source geospatial and hydro-meteorological data for the Sacramento Valley: a DEM, mapped waterways, NLCD land-use/land-cover, precipitation time series, and flood-extent raster for two 2018 events. The variables are prepared to a common grid so that each pixel has coincident topography, distance-to-channel, land cover, and precipitation attributes alongside its flood/non-flood label (from the flood maps), enabling supervised learning and correlation analyses. The Global Flood Database demonstrates the feasibility of event-based flood-extent mapping used as training targets.
+Our study integrates multi-source geospatial and hydrometeorological data for the Sacramento Valley, including DEM (elevation), slope, land use/land cover, distance to waterways, precipitation, and flood extent for a December 2018 event. We quantify spatial relationships between flood labels and each factor using thematic maps and summary statistics. All layers are projected to the WGS 1984 UTM Zone 10N coordinate system.
 
-== Flood Contributing Factors and Flood Data
+== DEM (elevation)
+DEM data for the study area were obtained from the USGS for a time period close to the December 2018 flooding event. The DEM was imported into ArcGIS Pro and re-projected to WGS 1984 UTM Zone 10N. Elevation and slope rasters were then derived from this dataset, and an appropriate color ramp was selected for visualization.
+The DEM indicates that elevation in the study area ranges from approximately −32 to 1,249 m above sea level. The mean elevation is about 122 m, which is much closer to the minimum than to the maximum value. This confirms that low-elevation terrain dominates the Sacramento Valley, consistent with regional topography and with our expectation that flooding is more likely to occur in local elevation minima.
 
-*DEM (elevation)*: Lower elevations concentrate surface water and are repeatedly identified as high-susceptibility zones in flood mapping; terrain-based indices derived from the DEM are widely used to delineate floodplains and ponding areas.
+#figure(image("figures/elevation_zoom.png"),caption: [DEM Data in Sacramento Valley, CA])
 
-*Slope*: Gentler slopes favor water accumulation and longer inundation residence times, while steep slopes promote rapid runoff; slope consistently ranks among the most important predictors in susceptibility models.
+== Slope
+From DEM, slope data was also derived in ArcGIS Pro. These results are shown in the figure below. Gentler slopes favor water accumulation and longer inundation residence times, while steep slopes promote rapid runoff. Slope consistently ranks among the most important predictors in susceptibility models.  It can be observed that the slope values at the base of the valley are very low (close to 0 degrees), which is consistent with our expectation for flooding to occur in low-slope areas.
 
-*Distance to waterway*: Proximity to rivers and streams strongly modulates flood likelihood; distance-to-river and stream-density metrics are standard covariates and often emerge as top features in ML models.
+#figure(image("figures/slope zoom.png"),caption: [Slope Data in Sacramento Valley, CA])
 
-*Daily/event precipitation*: Flood spatial extent is tied to storm magnitude and intensity; precipitation is a core driver variable in data-driven and physics-guided flood mapping.
 
-*Flood data*: Satellite-derived flood-extent products provide pixel-wise labels of flooded vs. non-flooded areas for specific events, suitable for training and validation.
-
-*Land use/Land Cover*: Impervious surfaces (urban) increase runoff and reduce infiltration, whereas vegetation/soils buffer peaks; land use is repeatedly shown to improve susceptibility mapping beyond rainfall alone.
-
-*Past flooding context: 2018 events*
-
-A strong March 2018 storm produced road flooding and rescues across Northern California, including the greater Sacramento region—consistent with our March 21th to 23rd analysis window.
-For early December 2018, our second window (Dec 5th to 9th) targets a winter storm period captured in our precipitation records and flood maps; we analyze these days as the event forcing for the observed inundation in our dataset (event-based labels from the Global Flood Database).
-
-We will quantify spatial relationships between flood labels and each factor via maps, distribution plots, and correlation/feature-importance analyses. Specifically, we'll test whether lower elevation, gentle slopes, shorter channel distances, higher event-window precipitation, and urban land cover co-locate with observed inundation, and rank their contributions with model-agnostic importance in the predictive plan.
 
 
 = Exploratory Data Analysis
