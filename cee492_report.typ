@@ -42,7 +42,7 @@
   bibliography: bibliography("refs.bib"), */
 )
 
-= Proposal 
+= Introduction
 
 Flooding in California's Sacramento Valley poses significant risks to communities, economic activity, and transportation systems. Our project will integrate multiple datasets—including precipitation, distance to waterways, DEM, and land cover—to identify the parameters most critical in driving flood events. By examining two major flooding events in 2018 with these datasets, we will conduct sensitivity analysis to quantify the relative contribution of each factor.
 
