@@ -157,16 +157,31 @@ Because the observed flooding is concentrated within a relatively narrow elevati
 
 = Predictive Modeling
 /*A brief plan for the predictive model you will create for Deliverable 3 */
-We plan to develop a supervised machine learning model with the following approach:
-1. Objective: Identify the most influential environmental variables driving flood events
-2. Input features: Precipitation, elevation (DEM), slope, land cover type, and distance to waterways.
-3. Study area: Sacramento Valley
-4. Model type: Random forest to capture nonlinear relationship
-5. Goal: Identify the most influential environmental variables driving flood events.
-6. Optional: Combining with a CNN UNet model to predict the flooding under different precipitation scenarios. By sensitivity analysis, we can reduce the not that important factors and accelerate the UNet model training.
-== Model Structure
-
+We proposed a supervised machine learning model with the following approach to identify the environmental variables most strongly associated with flood occurrence in Sacramento Valley. By conducting the sensitivity analysis, we are able to understand which factors are most influential which may improve the hazard mapping or the future assessment. 
+== Objective
+Objective
+Our goal is to identify the most influential environmental variables and hydrological factors that contribute the most to flood events in Sacramento Valley, CA. 
+== Input features
+Precipitation, elevation (DEM), slope, land cover type, and distance to waterways.
+== Model
+According to Farhadi (2021), Random Forest is a robust model for flood-related applications, especially when working with remote sensing data. It achieves high accuracy, reduces the risk of overfitting, and effectively captures nonlinear relationships among environmental variables. Furthermore, Random Forest offers fast computation and simpler parameter tuning than other machine learning methods such as neural networks. Moreover, Random Forest provides more stable performance on moderately sized datasets. In addition, the Scikit-Learn implementation of Random Forest provides direct estimates of feature importance, which supports the objective of this project. As a result, Random Forest is a suitable method for our project.
 == Training and Validation
+In this project, we will test several train–test split ratios, including 70/30, 75/25, and 80/20, and compare the model performance across these settings. Since our input classes are imbalanced, we plan to apply class_weight="balanced" to address the issue and improve the model’s ability to detect flooded pixels. For feature preparation, all geospatial layers are already aligned and extracted into a consistent pixel-level dataset, so no additional normalization is required for the Random Forest model.
+== Model Optimzation
+We plan to adjust the hyperparameter to optimize the model. Our model. 
+rf = RandomForestClassifier(n_estimators=100, max_depth=None, max_features="sqrt", n_jobs=-1, random_state=1234,)
+
+=== N_estimators represent the number of trees in the forest. A larger number of trees generally makes the model more stable, but it also increases training time. Since our dataset is moderately sized, we will fine-tune this parameter using values such as 50, 100, 150, 200. If the model accuracy does not improve after a certain point, there is no need to add more trees.
+
+=== Max_depth controls how deep each tree can grow. If the model shows signs of overfitting, we will limit the depth (e.g., max_depth = 10 or higher) and adjust it until the performance no longer improves.
+
+=== Max_features determines how many features each tree can use when splitting. The default setting is "sqrt", which means each split considers √(number of input features). This helps introduce randomness and reduces overfitting.
+
+=== N_jobs = -1 means the model will use all available CPU cores to speed up training.
+
+=== Random_state sets the random seed to ensure that the model results are reproducible.
+
+=== The default optimization metric– which was used for this project– utilized during training for the RandomForestClassifier is Gini Impurity. The post-training evaluation metrics are model accuracy, precision, recall, and F1 score.
 
 == Model Performance Evaluation
   To evaluate te success of our predictive model, we use several standard performance metrics including accuracy, precision, recall, and F1-score. These metrics provide a comprehensive understanding of the model's ability to correctly classify flooded and non-flooded areas.
