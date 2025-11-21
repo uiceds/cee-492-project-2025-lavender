@@ -56,18 +56,18 @@ The goal of this analysis is to develop a machine learning framework for flood p
   stroke: 0.5pt,                    // border lines
   table.header([*Dataset*], [*Source*], [*Format*], [*Description*]), 
   "Flood Data", 
-  "(1)",
+  [@flooddata],
   "TIFF",
   "Spatial distribution of flooding area for two flood events in 2018. 
   
 Pixel values indicate flood (1) and non-flood (0) area.", 
   "Precipitation",
-  "(2)",
+  [@precipcsv],
   "CSV",
   "Fields: 
 Date, Precipitation (mm), Daily precipitation during 2018-03-21 through 2018-03-23 and 2018-12-05 through 2018-12-09.",
   "Precipitation",
-  "(3)",
+  [@preciptxt],
   "TXT",
   "Fields: 
 Monitoring site ID, date, time, precipitation (inches).
@@ -75,18 +75,18 @@ Monitoring site ID, date, time, precipitation (inches).
 Recorded precipitation depth during the 15-min interval during two
 flooding events in Sacramento Valley in 2018.",
   "Distance to Waterway",
-  "(4)",
+  [@waterwaysdata],
   "SHP",
   "Fields: 
 Name, Type, ShapeLength, ShapeArea. 
 
 Using GIS to filter rivers/streams and drawing the centerlines where distance grids can be computed.",
   "DEM (Digital Elevation Model)",
-  "(5)",
+  [@demdata],
   "TIFF",
   "Elevation around Sacramento Valley area.",
   "Land Use / Land Cover data",
-  "(6)",
+  [@landcoverdata],
   "TIFF",
   "2018 National Land Cover Database (NLCD) raster data with 30-meter resolution. 
 
@@ -270,14 +270,11 @@ The low recall despite high accuracy demonstrates that the dataset is imbalanced
  
  Some methods for improving the model’s performance include adding more data on flooded areas and considering more parameters that may affect flood risk or to implement a weighting scheme that prioritizes parameters based on how indicative they are of flood occurrence.
 
-= Sources
 
-1. Global Flood Database — https://global-flood-database.cloudtostreet.ai
-2. NOAA Climate Data Online (GHCN‑Daily) — https://www.ncei.noaa.gov/cdo-web/
-3. USGS NWIS Current Conditions — Precipitation — https://waterdata.usgs.gov/nwis/rt
-4. USA Detailed Water Bodies (Esri Hub) — https://hub.arcgis.com/datasets/esri::usa-detailed-water-bodies/about
-5. USGS National Map Downloader — https://apps.nationalmap.gov/downloader/
-6. NLCD (MRLC) — https://www.mrlc.gov/data
+\
+
+#bibliography("refs.bib", title:[= V. Sources])
+
 
 
 /* 1. A narrative description and characterization of your dataset, interspersed 
