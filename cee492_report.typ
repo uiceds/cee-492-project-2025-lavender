@@ -206,12 +206,12 @@ rf = RandomForestClassifier(n_estimators=100, max_depth=None, max_features="sqrt
     ),
 
     text-cell([*Model prediction: Flooded*]),
-      num-cell([*391*], color: rgb("#058fd9c1")),
-      num-cell([*204*], color: rgb("#ff934f")),
+      [*391*],
+      [*204*],
 
     text-cell([*Model prediction: Non-flooded*]),
-      num-cell([*11187*], color: rgb("#ff934f")),
-      num-cell([*92005*], color: rgb("#058fd9c1")),
+      [*11187*],
+      [*92005*],
   ),
 ) <confusion-matrix>
 
@@ -276,6 +276,8 @@ The low recall despite high accuracy demonstrates that the dataset is imbalanced
 5. USGS National Map Downloader — https://apps.nationalmap.gov/downloader/
 6. NLCD (MRLC) — https://www.mrlc.gov/data
 
+= Reference
+[1] Hitouri, Sliman, et al. “Flood Susceptibility Mapping Using SAR Data and Machine Learning Algorithms in a Small Watershed in Northwestern Morocco.” Remote Sensing, vol. 16, no. 5, Feb. 2024, p. 858. DOI.org (Crossref), https://doi.org/10.3390/rs16050858.
 
 /* 1. A narrative description and characterization of your dataset, interspersed 
 2. summary statistics
