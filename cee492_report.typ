@@ -225,12 +225,12 @@ sets the random seed to ensure that the model results are reproducible.
     ),
 
     text-cell([*Model prediction: Flooded*]),
-      [*391*],
-      [*204*],
+      [*1674768*],
+      [*347078*],
 
     text-cell([*Model prediction: Non-flooded*]),
-      [*11187*],
-      [*92005*],
+      [*79075*],
+      [*1861111*],
   ),
 ) <confusion-matrix>
 
@@ -257,22 +257,22 @@ The confusion matrix in Table 1 compares the model’s flood prediction to the a
 
     // Accuracy
     text-cell([Accuracy]),
-    num-cell([0.89]),
+    num-cell([0.814]),
     text-cell([The accuracy remains high, dominated by true negatives.]),
 
     // Precision
     text-cell([Precision]),
-    num-cell([0.657]),
+    num-cell([0.349]),
     text-cell([Of the model’s predicted flood area, 66% was truly flooded.]),
 
     // Recall
     text-cell([Recall]),
-    num-cell([0.034]),
+    num-cell([0.702]),
     text-cell([The model correctly found just 3.4% of the flooded pixels.]),
 
     // F1-score
     text-cell([F1-score]),
-    num-cell([0.065]),
+    num-cell([0.466]),
     text-cell([The low recall brought down the F1 score for an overall low F1 score.]),
   ),
 )
@@ -288,5 +288,8 @@ The low recall despite high accuracy demonstrates that the dataset is imbalanced
 
 
 \
+
+= Discussion
+
 
 #bibliography("refs.bib", title:[= V. Sources])
