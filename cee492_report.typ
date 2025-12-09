@@ -283,7 +283,7 @@ With an accuracy of 81.4%, the model may appear reasonably successful at first g
 The combination of high accuracy and low precision suggests that the dataset is still dominated by non-flooded pixels, and the accuracy is influenced strongly by correct non-flooded predictions. While recall shows that the model is sensitive to flooded areas, the low precision means that many non-flooded pixels are incorrectly labeled as flooded. The F1-score of 0.466 reflects this tradeoff between relatively high recall and low precision, indicating that there is room for improvement in balancing missed floods versus false alarms.
 
 The precision represents how much of the model’s predicted flood zones were truly flooded in the real-world data. With 34.9% precision, only about one-third of the predicted flooded area was actually flooded, so increasing this value would make the model more reliable for practical applications. Some methods for improving the model’s performance include adding more data on flooded areas, rebalancing the dataset (for example, through oversampling or other techniques), and considering additional parameters that may affect flood risk. Adjusting the model’s decision threshold or using a weighting scheme that emphasizes more accurate flood predictions could also help reduce false positives and improve overall performance.
-/
+
 
 #figure(
   caption: [Random Forest feature importance],
