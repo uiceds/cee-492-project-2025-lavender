@@ -289,7 +289,53 @@ The low recall despite high accuracy demonstrates that the dataset is imbalanced
 
 \
 
+#figure(
+  caption: [Random Forest feature importance],
+  table(
+    columns: (auto, auto),
+
+    table.header(
+      text-cell([*Factor*]),
+      text-cell([*Importance*]),
+    ),
+
+    // Rows
+    text-cell([dem]),
+    num-cell([0.245]),
+
+    text-cell([slope]),
+    num-cell([0.061]),
+
+    text-cell([dist2river]),
+    num-cell([0.037]),
+
+    text-cell([landcover]),
+    num-cell([0.213]),
+
+    text-cell([aspect]),
+    num-cell([0.074]),
+
+    text-cell([curvature]),
+    num-cell([0.063]),
+
+    text-cell([TWI]),
+    num-cell([0.050]),
+
+    text-cell([rain]),
+    num-cell([0.257]),
+  ),
+)
+
+DEM (elevation) and precipitation are the two most important factors influencing flood occurrence, followed by land cover type. Slope, aspect, curvature, and topographic wetness index (TWI) have lower importance scores, indicating they contribute less to the model's predictions. These results align with our expectations, as elevation and rainfall are primary drivers of flooding, while land cover affects infiltration and runoff. The lesser importance of slope and other topographic features suggests that, in this region, they play a secondary role compared to elevation and precipitation.
+
 = Discussion
+Our results show that flooding in Sacramento Valley is mainly controlled by the interaction of elevation, land cover, and precipitation, with distance to waterways and detailed topographic metrics playing secondary roles. The December 2018 flood is concentrated in low-elevation, low-slope areas along the valley floor, while surrounding uplands remain largely unflooded. Within the 0–3 km river corridor, normalized flood rates are similar across distance bands, suggesting that once an area is “near” a river, local micro-topography and storage depressions are more important than exact distance to the channel. Land cover further modifies this pattern: cultivated crops have the highest flood prevalence, reflecting flat fields and limited drainage, whereas developed and vegetated areas show lower flood prevalence, likely due to stormwater infrastructure and higher infiltration and roughness.
+
+The precipitation analysis supports the role of short-duration, high-intensity storms as the main trigger for flooding. Only a small fraction of days experience heavy rainfall, but these events contribute disproportionately to annual totals and coincide with known flood years such as 2018.
+
+The Random Forest model captures part of this physical understanding but is clearly affected by class imbalance. Because the dataset contains far more non-flooded than flooded pixels, the model can achieve high overall accuracy by favoring non-flooded predictions, which leads to low recall for the flooded class. In other words, it is conservative and tends to miss many flooded pixels, limiting its usefulness for detecting all flooded areas. DEM (elevation) and precipitation are the two most important factors influencing flood occurrence, followed by land cover type. Slope, aspect, curvature, and topographic wetness index (TWI) have lower importance scores, indicating they contribute less to the model’s predictions. These results align with our expectations, as elevation and rainfall are primary drivers of flooding, while land cover affects infiltration and runoff. The lesser importance of slope and other topographic features suggests that, in this region, they play a secondary role compared to elevation and precipitation, and the low importance of distance to river is consistent with our finding that proximity to channels within 3 km does not sharply separate flooded from non-flooded pixels.
+
+This study has several limitations. The model is trained on a single flood event and uses mostly static predictors at 30 m resolution, so event-specific patterns, unresolved small-scale features, and missing dynamic variables (e.g., soil moisture, river stage, reservoir operations) all restrict generalization. In future work, rebalancing the training data (e.g., oversampling flooded pixels), tuning the classification threshold, and evaluating performance with precision–recall metrics could better handle class imbalance. Incorporating multiple flood events, additional hydrologic variables, and models that account for spatial context would likely improve flood detection and make this framework more useful for operational flood-risk assessment.
 
 
 #bibliography("refs.bib", title:[= V. Sources])
