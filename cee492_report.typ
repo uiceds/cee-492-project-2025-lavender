@@ -118,6 +118,19 @@ From DEM, slope data was also derived in ArcGIS Pro. These results are shown in 
 
 #figure(image("figures/slope zoom.png"),caption: [Slope Data in Sacramento Valley, CA])
 
+== Aspect
+Aspect can be derived directly from the DEM, and the output represents the slope direction (e.g., N, NE, E). This factor influences landform development and helps explain how water may flow or accumulate during flooding events. In this study, we classified aspect into eight categories: flat (no slope), north (315°–22.5°), northeast (22.5°–67.5°), east (67.5°–112.5°), southeast (112.5°–157.5°), south (157.5°–202.5°), southwest (202.5°–247.5°), west (247.5°–292.5°), and northwest (292.5°–315°).
+#figure(image("figures/Layout_Aspect.png"),caption: [Aspect Data in Sacramento Valley, CA])
+
+== Curvature
+Curvature describes how water flows across the surface, and it can also be derived from a DEM using ArcGIS. After computing this factor, a value of zero indicates areas with a higher potential flood risk. In this study, we classified plan curvature into three categories: concave (positive values), flat (zero values), and convex (negative values).
+#figure(image("figures/Layout_Curvature.png"),caption: [Curvature Data in Sacramento Valley, CA])
+
+== Topographic Wetness Index (TWI)
+Previous studies have shown that the topographic wetness index (TWI) is closely related to flood occurrence. TWI represents how much moisture tends to accumulate in a watershed under the influence of gravity.
+TWI is calculated using the formula: TWI = ln(a / tanβ), where 'a' is the upslope contributing area per unit contour length, and 'β' is the local slope angle. Higher TWI values indicate areas more prone to saturation and flooding. In this study, we derived TWI from the DEM using ArcGIS Pro.
+#figure(image("figures/Layout_TWI.png"),caption: [TWI Data in Sacramento Valley, CA])
+
 == Distance to waterway
 Distance to waterways was computed from land cover data. We first extracted waterbodies from the land cover map to create a separate “open water” layer. Non-overlapping buffer rings were then generated around these waterbodies at specified distance intervals (in kilometers). Using the Intersect tool, we clipped flood polygons with each buffer ring so that distance class was stored as an attribute. For each ring, we calculated (i) the share of total flooded area and (ii) a normalized flood rate defined as (flooded area within a ring) / (total ring area). 
 
