@@ -174,7 +174,8 @@ Extreme single-day precipitation maxima (1.5–3.5 in) closely track annual tota
 == Flood data
 Flood extents for the March 2018 and December 2018 events were imported into ArcGIS Pro and clipped to the study area. For March, the total flooded area is approximately 319 km², and for December, it is around 127 km², within a total area of interest of 11,835 km². Visual inspection of the flood map confirms that most inundation occurs in low-elevation zones at the base of the valley, consistent with our DEM and slope analyses.
 Because the observed flooding is concentrated within a relatively narrow elevation range, the study may not fully capture the broader relationship between elevation and flood occurrence. Nonetheless, the satellite-derived flood-extent product provides pixel-level labels of flooded versus non-flooded areas for this event, which is suitable for training and validating data-driven flood susceptibility models.
-#figure(image("figures/Layout_1205.png"),caption: [Flood Map Overlaid on DEM Raster Data])
+#figure(image("figures/Layout_1205.png"),caption: [Mar 2018 Flood Map Raster Data])
+#figure(image("figures/Layout_0321.png"),caption: [Dec 2018 Flood Map Raster Data])
 
 
 = Predictive Modeling
@@ -192,16 +193,36 @@ For the loss function, the random forest also applies Gini impurity when doing t
 #figure(image("figures/RF_structure.png"),caption: [Random Forest Structure @Farhadi])
 
 == Training and Validation
-In this project, we will test several train–test split ratios, including 70/30, 75/25, and 80/20, and compare the model performance across these settings. Since our input classes are imbalanced, we plan to apply class_weight="balanced" to address the issue and improve the model’s ability to detect flooded pixels. For feature preparation, all geospatial layers are already aligned and extracted into a consistent pixel-level dataset, so no additional normalization is required for the Random Forest model.
+In this project, we wrote a script that reads multiple GIS raster layers and converts them into a clean pixel-level dataset. It then stacks the December and March event data and outputs a single CSV file (flood_data.csv) containing all input features and flood labels for modeling.
+Since our input classes are imbalanced, we addressed this issue by applying class_weight = {0: 1, 1: 6} to improve the model’s ability to detect flooded pixels. For feature preparation, all geospatial layers were already aligned and extracted into a consistent pixel-level dataset, so no additional normalization was required for the Random Forest model.
 == Model Optimzation
-We plan to adjust the hyperparameter to optimize the model. Our model. 
-rf = RandomForestClassifier(n_estimators=100, max_depth=None, max_features="sqrt", n_jobs=-1, random_state=1234,)
+We plan to adjust the hyperparameter to optimize the model. Our model:
+
+rf = RandomForestClassifier( 
+
+    n_estimators=200,
+
+    max_depth= 25,
+
+    min_samples_leaf = 3,
+
+    max_features="sqrt",
+
+    n_jobs=-1,
+
+    random_state=1234,
+
+    class_weight= {0: 1, 1: 6}  )
+
 
 === N_estimators 
-represent the number of trees in the forest. A larger number of trees generally makes the model more stable, but it also increases training time. Since our dataset is moderately sized, we will fine-tune this parameter using values such as 50, 100, 150, 200. If the model accuracy does not improve after a certain point, there is no need to add more trees.
+represent the number of trees in the forest. A larger number of trees generally makes the model more stable, but it also increases training time.  Since our dataset is moderately sized, we selected 200 trees. If the model accuracy does not improve after a certain point, there is no need to add more trees.
 
 === Max_depth
- controls how deep each tree can grow. If the model shows signs of overfitting, we will limit the depth (e.g., max_depth = 10 or higher) and adjust it until the performance no longer improves.
+ controls how deep each tree can grow. Since deeper trees can capture more complex patterns but also risk overfitting, we set an initial max_depth of 25. This allows the trees to learn detailed relationships without becoming too complex.
+
+=== Min_samples_leaf
+specifies the minimum number of samples required to be at a leaf node. Setting this to 3 helps prevent the model from creating leaves that are too specific to the training data, which can lead to overfitting. It encourages the model to generalize better by ensuring that each leaf has enough data points.
 
 === Max_features 
 determines how many features each tree can use when splitting. The default setting is "sqrt", which means each split considers √(number of input features). This helps introduce randomness and reduces overfitting.
@@ -211,6 +232,9 @@ means the model will use all available CPU cores to speed up training.
 
 === Random_state
 sets the random seed to ensure that the model results are reproducible.
+
+=== Class_weight
+addresses the class imbalance in our dataset by assigning a higher weight to the minority class (flooded pixels). This helps the model pay more attention to flooded areas during training, improving its ability to detect them.
 
 === Optimization metric
   The metric used during training for the RandomForestClassifier is Gini Impurity. The post-training evaluation metrics are model accuracy, precision, recall, and F1 score.
@@ -238,12 +262,12 @@ sets the random seed to ensure that the model results are reproducible.
     ),
 
     text-cell([*Model prediction: Flooded*]),
-      [*1674768*],
-      [*347078*],
+      [*1,674,768*],
+      [*347,078*],
 
     text-cell([*Model prediction: Non-flooded*]),
-      [*79075*],
-      [*1861111*],
+      [*79,075*],
+      [*1,861,111*],
   ),
 ) <confusion-matrix>
 
@@ -251,7 +275,7 @@ sets the random seed to ensure that the model results are reproducible.
 
 
 The confusion matrix in Table 1 compares the model’s flood prediction to the actual flooded areas observed in the real world (ground truth). True, or correct, predictions are highlighted in green, and false ones in red. 
-“True (Model prediction)” represents pixels where the model predicted flooding, and “True (Ground truth)” represents the pixels that were actually flooded in the real world flood dataset. The model correctly predicted 1674768 pixels as flooded (true positive), but incorrectly predicted that an additional 347078 pixels were flooded, which were not flooded in real life (false positive). 79075 ground truth flood points were incorrectly predicted to be non-flooded (false negative), while the other 1861111 pixels that the model predicted as non-flooded were correct (true negative). This table makes it clear how often the model successfully detected true flooding versus how often it failed, and it provides a foundation for understanding the model’s strengths and limitations.
+“True (Model prediction)” represents pixels where the model predicted flooding, and “True (Ground truth)” represents the pixels that were actually flooded in the real world flood dataset. The model correctly predicted 1,674,768 pixels as flooded (true positive), but incorrectly predicted that an additional 347,078 pixels were flooded, which were not flooded in real life (false positive). 79,075 ground truth flood points were incorrectly predicted to be non-flooded (false negative), while the other 1861111 pixels that the model predicted as non-flooded were correct (true negative). This table makes it clear how often the model successfully detected true flooding versus how often it failed, and it provides a foundation for understanding the model’s strengths and limitations.
 
 #let text-cell(content) = align(left, content)
 #let num-cell(content) = align(center, content)
@@ -344,7 +368,7 @@ The precipitation analysis supports the role of short-duration, high-intensity s
 
 The Random Forest model captures part of this physical understanding but is clearly affected by class imbalance. Because the dataset contains far more non-flooded than flooded pixels, the model can achieve high overall accuracy by favoring non-flooded predictions, which leads to low recall for the flooded class. In other words, it is conservative and tends to miss many flooded pixels, limiting its usefulness for detecting all flooded areas. DEM (elevation) and precipitation are the two most important factors influencing flood occurrence, followed by land cover type. Slope, aspect, curvature, and topographic wetness index (TWI) have lower importance scores, indicating they contribute less to the model’s predictions. These results align with our expectations, as elevation and rainfall are primary drivers of flooding, while land cover affects infiltration and runoff. The lesser importance of slope and other topographic features suggests that, in this region, they play a secondary role compared to elevation and precipitation, and the low importance of distance to river is consistent with our finding that proximity to channels within 3 km does not sharply separate flooded from non-flooded pixels.
 
-This study has several limitations. The model is trained on a single flood event and uses mostly static predictors at 30 m resolution, so event-specific patterns, unresolved small-scale features, and missing dynamic variables (e.g., soil moisture, river stage, reservoir operations) all restrict generalization. In future work, rebalancing the training data (e.g., oversampling flooded pixels), tuning the classification threshold, and evaluating performance with precision–recall metrics could better handle class imbalance. Incorporating multiple flood events, additional hydrologic variables, and models that account for spatial context would likely improve flood detection and make this framework more useful for operational flood-risk assessment.
+This study has several limitations. The model is trained on 2 flood events and uses mostly static predictors at 30 m resolution, so event-specific patterns, unresolved small-scale features, and missing dynamic variables (e.g., soil moisture, river stage, reservoir operations) all restrict generalization. In future work, rebalancing the training data (e.g., oversampling flooded pixels), tuning the classification threshold, and evaluating performance with precision–recall metrics could better handle class imbalance. Incorporating multiple flood events, additional hydrologic variables, and models that account for spatial context would likely improve flood detection and make this framework more useful for operational flood-risk assessment.
 
 
 #bibliography("refs.bib", title:[= V. Sources])
