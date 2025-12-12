@@ -172,7 +172,7 @@ Extreme single-day precipitation maxima (1.5–3.5 in) closely track annual tota
 #figure(image("figures/Precip plot 2.png"),caption: [Average Precipitation by Years])
 
 == Flood data
-Flood extent for the December 2018 event was imported into ArcGIS Pro and clipped to the study area. The total flooded area is 261.5 km² within a total area of interest of 11,834.692 km². Visual inspection of the flood map confirms that most inundation occurs in low-elevation zones at the base of the valley, consistent with our DEM and slope analyses.
+Flood extents for the March 2018 and December 2018 events were imported into ArcGIS Pro and clipped to the study area. For March, the total flooded area is approximately 319 km², and for December, it is around 127 km², within a total area of interest of 11,835 km². Visual inspection of the flood map confirms that most inundation occurs in low-elevation zones at the base of the valley, consistent with our DEM and slope analyses.
 Because the observed flooding is concentrated within a relatively narrow elevation range, the study may not fully capture the broader relationship between elevation and flood occurrence. Nonetheless, the satellite-derived flood-extent product provides pixel-level labels of flooded versus non-flooded areas for this event, which is suitable for training and validating data-driven flood susceptibility models.
 #figure(image("figures/Layout_1205.png"),caption: [Flood Map Overlaid on DEM Raster Data])
 
